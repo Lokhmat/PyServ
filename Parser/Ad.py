@@ -5,5 +5,6 @@ class Ad():
         self.price = price
         self.link = link
         self.views = views
-    
-print(Ad("as","asdf", 111,"asdf",12))
+    def __eq__(self,other):
+        return self.link[-10:]==other.link[-10:]
+        
