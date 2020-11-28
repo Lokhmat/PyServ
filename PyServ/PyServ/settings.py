@@ -5,12 +5,12 @@
 
 # Celery settings
 
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost'
+CELERY_BROKER_URL = 'localhost:8000'
 
 #: Only add pickle to this list if your broker is secured
 #: from unwanted access (see userguide/security.html)
 CELERY_ACCEPT_CONTENT = ['json']
-CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
+CELERY_RESULT_BACKEND = 'django-db'
 CELERY_TASK_SERIALIZER = 'json'
 
 
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Main.apps.MainConfig',
     'rest_framework',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
