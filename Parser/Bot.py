@@ -28,5 +28,6 @@ class Bot:
 
 if __name__=="__main__":
     bot = Bot()
-    print(Parser.get_page(bot.users[0].links[0],3,bot.users[0].proxies))
-    print(bot.users[0].proxies)
+    t=Parser.get_page(bot.users[0].links[0],0,bot.users[0])
+    for e in t:
+        print(e)
