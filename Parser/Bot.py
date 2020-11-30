@@ -12,9 +12,13 @@ class Bot:
             lines = file.readlines()
         for line,i in zip(lines,range(len(lines))):
             proxies = []
+            links = []
             with open('%s.txt' %line, 'r') as file:
-                proxies = file.readlines()
-            self.users.append(User(i,line,proxies))
+                temp = file.read().splitlines()
+            proxies = temp[:temp.index('-')]
+            proxies.insert(0,'1')
+            links = temp[temp.index('-')+1:]
+            self.users.append(User(i,line,proxies,links))
         
 
 
@@ -24,5 +28,5 @@ class Bot:
 
 if __name__=="__main__":
     bot = Bot()
-    print(bot.users)
-
+    print(Parser.get_page(bot.users[0].links[0],3,bot.users[0].proxies))
+    print(bot.users[0].proxies)
