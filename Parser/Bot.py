@@ -1,6 +1,7 @@
 from User import User
 from Parser import Parser
 from Ad import Ad
+import time
 class Bot:
     token =  '1223014907:AAHQoqCh_RpBSFqBna8PvTi9j7yL9W6HDEY'
     api_url = 'https://api.telegram.org/bot{}/'.format(token)
@@ -19,15 +20,24 @@ class Bot:
             proxies.insert(0,'1')
             links = temp[temp.index('-')+1:]
             self.users.append(User(i,line,proxies,links))
-        
+    def work(self):
+        while(True):
+            try:
+                for user in self.users:
+                    for link in user.links:
+                        print(user.proxies)
+                        pages = Parser.get_page(link,0,user)
+                        for page in pages:
+                            if(not (page in user.ads)):
+                                user.ads.append(page)
+                #time.sleep(2.0/(len(user.proxies)-1))
+                time.sleep(2)
+            except Exception:
+                print(Exception)
 
-
-
-
-
+            
+            
 
 if __name__=="__main__":
     bot = Bot()
-    t=Parser.get_page(bot.users[0].links[0],0,bot.users[0])
-    for e in t:
-        print(e)
+    bot.work()

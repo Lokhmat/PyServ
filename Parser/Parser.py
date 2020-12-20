@@ -33,7 +33,6 @@ class Parser:
             temp = bs1.select('a[class*="link-link-"]')
             name = str(str(name).split('>')[1])[:-6]
             price = str(str(price).split('>')[1])[:-7]
-            print(temp)
             link ='https://www.avito.ru' + str(str(temp).split('href="')[1].split('" itemprop')[0])
             ans = Ad(name,price,link,-1)
             Ans.append(ans)
