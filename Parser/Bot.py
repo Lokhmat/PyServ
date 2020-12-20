@@ -24,16 +24,19 @@ class Bot:
         while(True):
             try:
                 for user in self.users:
-                    for link in user.links:
+                    for i in range(len(user.links)):
                         print(user.proxies)
-                        pages = Parser.get_page(link,0,user)
+                        pages = Parser.get_page(user.links[i],0,user)
                         for page in pages:
-                            if(not (page in user.ads)):
-                                user.ads.append(page)
-                #time.sleep(2.0/(len(user.proxies)-1))
-                time.sleep(2)
+                            if(not (page in user.ads[i])):
+                                user.ads[i].append(page)
+                                user.send(page,self.api_url)
+                            if(len(user.ads[i])>10):
+                                user.ads[i]=user.ads[i][-5:]
+
             except Exception:
                 print(Exception)
+            time.sleep(3)
 
             
             

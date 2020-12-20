@@ -8,7 +8,7 @@ class User():
         self.token = token
         self.proxies = proxies
         self.links = links
-        self.ads = []
+        self.ads = [[]*len(links)]
     def send(self,ad,token):
         params = {'chat_id': str(self.token), 'text': str(ad)}
         method = 'sendMessage'
@@ -19,4 +19,6 @@ class User():
         except Exception:
             print('failed to connect')
             return 1
+    def clean():
+        pass
 
