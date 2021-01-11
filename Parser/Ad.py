@@ -5,7 +5,7 @@ class Ad():
         self.link = link
         self.views = views
     def __eq__(self,other):
-        return self.link[-30:]==other.link[-30:]
+        return self.link==other.link or (self.name==other.name and self.price == other.price)
     def __str__(self):
         return '%s \n%s \n%s \n%s'%(self.name,self.price,self.link,self.views)
         

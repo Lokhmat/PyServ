@@ -21,6 +21,11 @@ class Bot:
             links = temp[temp.index('-')+1:]
             self.users.append(User(i,line,proxies,links))
     def work(self):
+        try:
+            for user in self.users:
+                user.send_text('Версия 0.2.1 запуск.',self.api_url)
+        except Exception as e:
+            print(e)
         while(True):
             try:
                 for user in self.users:
@@ -34,9 +39,9 @@ class Bot:
                             if(len(user.ads[i])>10):
                                 user.ads[i]=user.ads[i][-5:]
 
-            except Exception:
-                print(Exception)
-            time.sleep(3)
+            except Exception as e:
+                print(e)
+            time.sleep(3.0/(len(user.proxies)-1))
 
             
             
