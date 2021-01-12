@@ -36,12 +36,12 @@ class Bot:
                             if(not (page in user.ads[i])):
                                 user.ads[i].append(page)
                                 user.send(page,self.api_url)
-                            if(len(user.ads[i])>10):
+                            if(len(user.ads[i])>50):
                                 user.ads[i]=user.ads[i][-5:]
 
             except Exception as e:
                 print(e)
-            time.sleep(3.0/(len(user.proxies)-1))
+            time.sleep(3/(len(user.proxies)-1))
 
             
             

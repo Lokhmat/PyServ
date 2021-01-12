@@ -22,6 +22,7 @@ class Parser:
         else:
             user.proxies[0] = str((int(user.proxies[0]) + 1))
         site = requests.get(url,headers = headers, proxies = proxies, allow_redirects=False)
+        print(site)
         bs = BeautifulSoup(site.text,"html.parser")
         needed = bs.select('div[class*="iva-item-body-"]')
         Useful = [needed[num],needed[num+1],needed[num+2]]
