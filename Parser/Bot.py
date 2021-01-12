@@ -41,7 +41,7 @@ class Bot:
 
             except Exception as e:
                 print(e)
-            time.sleep(3/(len(user.proxies)-1))
+            time.sleep(3.0/(len(user.proxies)-1))
 
             
             
