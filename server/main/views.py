@@ -4,3 +4,6 @@ from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadReq
 
 def homepage(request):
     return HttpResponse('Ok')
+
+def index(request):
+    return render(request, 'main/index.html')
