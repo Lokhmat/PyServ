@@ -1,3 +1,6 @@
-.DIV{
+.test{
     color: green;
+    &:hover{
+        color:white;
+    }
 }
